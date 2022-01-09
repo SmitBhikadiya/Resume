@@ -56,6 +56,7 @@ main{
     height: 100vh;
     display: flex;
     align-items: center;
+    position: relative;
 }
 .aboutme{
     border-top:5px solid #000000dc;
@@ -136,7 +137,7 @@ main{
 /* next-arrow */
 .next-arrow span{
     cursor: pointer;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     padding-bottom: 50px;
     left: 50%;
@@ -202,23 +203,50 @@ main{
     }
 }
 
-/* Section heading */
+/* Common css for Section */
 .section_heading{
-    text-align: center;
+    border-bottom: 1px double #000000dc;
 }
 .section_heading h2{
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
     font-size: 34px;
     padding-bottom: 5px;
     color: #000000dc;
-    border-bottom: 1px solid #000000dc;
+}
+#education, #skills, #portfolio{
+    height: 100vh;
+    padding-top: 80px;
+}
+.section_heading h2 span{
+    width: 150px;
+    position: absolute;
+    left: 105%;
+    top: 0;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: brown;
+}
+
+@media screen and (max-width:574px) {
+    #education, #skills, #portfolio{
+        height: auto;
+    }
+    .section_heading h2{
+        font-size: 28px;
+        border-bottom: 1px solid inherit;
+        margin-left: 0;
+    }
+}
+@media screen and (max-width:435px) {
+    .section_heading h2 span{
+        display: none;
+    }
 }
 
 /*-------------- Section Education --------------*/
 
-#education{
-    height: 100vh;
-    padding-top: 80px;
-}
 .my_education{
     padding:10px
 }
@@ -245,8 +273,206 @@ main{
     letter-spacing: 1.2px;
 }
 
-/*------------- Section Achievement --------------*/
+/*------------- Section Skills & Abilities --------------*/
 
-#skillstechnical{
+#skills{
     height: 100vh;
+}
+.skills-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.skills-wrapper .div-wrap{
+    width: 100%;
+}
+.skill{
+    width: 90%;
+    margin: 0 auto;
+}
+.skill:not(:last-child){
+    margin-bottom: 30px;
+}
+.detailes{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.bar{
+    position: relative;
+    border: 2px solid #232323;
+    border-radius: 20px;
+}
+
+.bar div{
+    position: relative;
+    width: 0;
+    height: 9px;
+    border-radius: 10px;
+    background-color: rgba(165, 42, 42, 0.87);
+}
+
+#htmlcss-bar{
+    animation: htmlcss-fill 2s forwards;
+}
+
+@keyframes htmlcss-fill{
+    100%{
+        width: 85%;
+    }
+}
+#js-bar{
+    animation: js-fill 2s forwards;
+}
+@keyframes js-fill{
+    100%{
+        width: 75%;
+    }
+}
+#git-bar{
+    animation: git-fill 2s forwards;
+}
+@keyframes git-fill{
+    100%{
+        width: 75%;
+    }
+}
+#php-bar{
+    animation: php-fill 2s forwards;
+}
+@keyframes php-fill{
+    100%{
+        width: 85%;
+    }
+}
+
+#mysql-bar{
+    animation: mysql-fill 2s forwards;
+}
+@keyframes mysql-fill{
+    100%{
+        width: 80%;
+    }
+}
+#ds-bar{
+    animation: ds-fill 2s forwards;
+}
+@keyframes ds-fill{
+    100%{
+        width: 70%;
+    }
+}
+#java-bar{
+    animation: java-fill 2s forwards;
+}
+@keyframes java-fill{
+    100%{
+        width: 75%;
+    }
+}
+#python-bar{
+    animation: python-fill 2s forwards;
+}
+@keyframes python-fill{
+    100%{
+        width: 75%;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .skills-wrapper{
+        flex-wrap: wrap;
+    }
+    .div-wrap{
+        margin-bottom: 30px;
+    }
+}
+
+/*---------------- portfolio --------------*/
+
+.project-main{
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.project{
+    width: 320px;
+    height: 375px;
+    margin: 5px;
+    box-shadow: 0 4px 8px #000000dc;
+}
+.project-title, .project-desc{
+    padding: 0 20px;
+    margin-top: 10px;
+}
+.project-desc a{
+    text-decoration: none;
+    color: brown;
+}
+.project-title h3{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+.project-title h3 span{
+    margin-top: 5px;
+    font-size: 14px;
+    color: brown;
+    font-weight: 500;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.089);
+}
+
+/* slider setting */
+.carousel-inner{
+    height: 435px;
+}
+.carousel-control-prev-icon,.carousel-control-next-icon{
+    width: 3rem;
+    height: 3rem;
+}
+.carousel-control-prev{
+    left: -100px;
+}
+.carousel-control-next{
+    right: -100px;
+}
+
+@media screen and (max-width:1150px) {
+    main{
+        width: 90vw;
+    }
+    .project-main{
+        flex-wrap: wrap;
+    }
+    .carousel-inner{
+        height: 100%;
+    }
+    .next-arrow{
+        display: none;
+    }
+    .carousel-control-prev{
+        top: 105%;
+        left: 38%;
+    }
+    .carousel-control-next{
+        right: 38%;
+        top:105%;
+    }
+}
+@media screen and (max-width:720px) {
+    #education, #skills, #portfolio{
+        height: 100%;
+    }
+    .carousel-control-prev{
+        top: 0;
+        left: 0;
+    }
+    .carousel-control-next{
+        top:0;
+        right: 0;
+    }
 }
